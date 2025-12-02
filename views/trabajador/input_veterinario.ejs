@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/estilos.css"></head>
+    <meta charset="UTF-8">
+    <title>Inserta datos del Usuario</title>
+</head>
+<body>
+    <h1>Datos:</h1>
+<form action="/trabajador/input_veterinario" method="post">
+    <label for ="nombre">Nombre</label>         
+    <input type="text" name="nombre" id="nombre" required><br>
+
+
+
+    <label for ="apellido1">Primer Apellido</label>
+    <input type="text" name="apellido1" id="apellido1" required><br>
+    <label for ="apellido2">Segundo Apellido</label>
+    <input type="text" name="apellido2" id="apellido2" ><br>
+    <label for ="edad">Edad</label>
+    <input type="number" name="edad" id="edad" required><br>
+    <label for ="usuario">Usuario</label>
+    <input type="text" name="usuario" id="usuario" required><br>
+    <label for ="contrasena">Password</label>
+    <input type="text" name="contrasena" id="contrasena" required><br>
+
+        <%if(user.refugio_id==0){ %>
+    <label for ="refugioId">Refugio id</label>
+    <input type="number" name="refugioId" id="refugioId" required><br>
+
+    <% }
+    else{ %>
+    <input type="hidden" name="refugioId" value="<%= user.refugio_id %>">
+<% } %>
+
+    <label for ="salario">Salario</label>
+    <input type="text" name="salario" id="salario" required><br>
+    
+    <button type="submit">Guardar Usuario</button>
+    <!-- <a href="/hola"><button>Volver a inicio</button></a> -->
+</form>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido a Refugios de Michos</h1>
+    <% if (session.user) { %>
+        <p><a href="/auth/login2">Ir a página principal</a></p>
+        <p>Hola, <%= session.user.usuario %> | <a href="/auth/logout">Cerrar sesión</a></p>
+        
+    <% } else { %>
+        <a href="/auth/login">Iniciar sesión</a>
+        <p><a href="/input_adoptante_form"> Registrarse</a></p>
+         
+    <% } %>
+    <br>
+    
+  <div class="buscar-contenedor">
+ <button class="btn" id="botonBusqueda">Filtros de búsqueda</button>
+
+ <div class="panel-oculto" id="busquedaPanel">
+
+    <form action="/listar_gatos_nombre" method="get">
+        <input type="text" name="nombre" placeholder="Buscar por nombre" >
+        
+        <button type="submit">Buscar</button>
+    </form>
+
+   
+    <form action="/listar_gatos_edad" method="get">
+        <input type="number" name="edad" placeholder="Edad" step="1" >
+        <button type="submit">Buscar</button>
+    </form>
+
+    
+    <form action="/listar_gatos_menor_edad" method="get">
+        <input type="number" name="edad" placeholder="Menor o igual a tal edad" step="1" >
+        <button type="submit">Buscar</button>
+    </form>
+
+       
+    <form action="/listar_gatos_mayor_edad" method="get">
+        <input type="number" name="edad" placeholder="Mayor o igual a tal edad" step="1" >
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+</div>
+
+    
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+  <% gatos.forEach(gato => { %>
+    <div style="display: flex; flex-direction: column; width: 180px; border: 1px solid #ccc; border-radius: 8px; padding: 10px; box-sizing: border-box; background: #fafafa;">
+      
+      <!-- Foto -->
+      <% if (gato.vw_GatosMultimedia.length > 0) { %>
+        <img src="/<%= gato.vw_GatosMultimedia[0].url %>" 
+             alt="Foto del gato" 
+             style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+      <% } else { %>
+        <div style="width: 100%; height: 150px; background:#eee; border-radius:4px; margin-bottom:10px;"></div>
+      <% } %>
+
+     
+      <div>
+        <p><strong>Nombre:</strong> <%= gato.nombreGato %></p>
+        <p><strong>Descripción:</strong> <%= gato.descripcion %></p>
+      </div>
+
+     
+      <form action="/listar_gato_id" method="get" style="margin-top:10px;">
+        <input type="hidden" name="id" value="<%= gato.id %>">
+        <button type="submit" style="width:100%;">Ver</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('botonBusqueda');
+        const panel = document.getElementById('busquedaPanel');
+
+        
+        if (!btn || !panel) {
+            console.error("Error: No se encontró el botón o el panel. Revisa los IDs.");
+            return;
+        }
+
+        btn.addEventListener('click', (e) => {
+           
+            e.preventDefault(); 
+          
+            panel.classList.toggle('mostrar');
+            
+           
+            console.log("Clase 'mostrar' alternada");
+        });
+    });
+</script>
+    
+</body>
+</html>

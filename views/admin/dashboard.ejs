@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>   
+    <head>
+        
+        <link rel="stylesheet" href="/css/estilos.css"></head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Trabajador</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Bienvenid@ <%=user.nombre%></h1>
+        
+        <br>
+        <table width="300px">
+            <tr>
+                <td><a href="/admin_refugio/home"><button>Operaciones Admin Refugio</button></a></td>
+                <td><a href="/trabajador/home"><button>Operaciones Trabajador</button></a></td>
+            </tr>
+            <tr>
+                <td><a href="/veterinario/home"><button>Operaciones veterinario</button></a></td>
+                <td><a href="/voluntario/home"><button>Operaciones Voluntarios</button></a></td>
+            </tr>
+            <tr>
+                <td><a href="/usuario/home"><button>Operaciones Adoptante</button></a></td>
+                <td></td>
+            </tr>
+       
+            <tr>
+                <td> <a href="/admin/listar_admins_refugio"><button>Ver admins_refugio</button></a></td>
+                <td><a href="/admin/input_admin_refugio_formulario"><button>Insertar admin_refugio</button></a></td>
+            </tr>
+            <tr>
+                <td><a href="/admin/listar_refugios"><button>Ver refugios</button></a></td>
+                <td> <a href="/admin/input_refugio_formulario"><button>Insertar refugio</button></a></td>
+            </tr>
+          
+        </table>
+       <br>
+       <form action="/admin/cambiar_refugio" method="post"> 
+            <label>ID del refugio:</label>
+            <input type="number" name="refugio_id"  required><br>
+           
+            <button type="submit">Filtrar por id</button>
+        </form>
+
+    </body>
+</html>

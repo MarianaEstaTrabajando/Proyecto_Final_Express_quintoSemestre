@@ -1,0 +1,46 @@
+ <head><link rel="stylesheet" href="/css/estilos.css"></head>
+<body>
+
+    <table border="1" >
+    <tr>
+        <th>Medicina id</th>
+        <th>Descripcion</th>
+        <th>Lugar recetado</th>
+        <th>Veterinario_id</th>
+        <th>Refugio id</th>
+        <th>Guardar modificación</th>
+    </tr>
+
+    <% medicinas.forEach(medicina => { %>
+    
+    <tr>
+            <form action="/veterinario/modificar_medicina/<%= medicina.id %>" method="post">
+
+            <td><%=medicina.id%> </td>
+            
+
+            <td><input type="text" name="descripcion" value="<%= medicina.descripcion %>" required></td> 
+            
+            <td><input type="text" name="lugar_recetado" value="<%= medicina.lugar_recetado %>" ></td>
+
+            <input type="hidden" name="id_veterinario" value="<%=medicina.id_veterinario%>" >
+
+            <input type="hidden" name="refugioId" value="<%=medicina.refugio_id%>" >
+            
+            <td><%=medicina.id_veterinario%></td>
+
+            <td><%=medicina.refugio_id%></td>
+            
+            
+                
+    <td> <button type="submit">Guardar cambios</button></td>
+        
+    </form>
+</tr>
+
+    
+    <% }) %>
+</table>
+
+
+</body>

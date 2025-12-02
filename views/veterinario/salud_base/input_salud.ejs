@@ -1,0 +1,59 @@
+ <head><link rel="stylesheet" href="/css/estilos.css"></head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/estilos.css"></head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Trabajador</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <p>Bienvenid@ <%=user.nombre%></p>
+
+        <h1>Insertar vacuna</h1>
+
+        <form action="/veterinario/input_vacuna" method="post">
+        <label>Nombre:</label>
+        <input type="text" name="vacuna" required><br><br>
+        <label>Descripcion:</label>
+        <input type="text" name="descripcion" ><br><br>
+        <label>Lugar recetado:</label>
+        <input type="text" name="lugar_recetado" ><br><br>
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <br>
+
+    <h1>Insertar medicina</h1>
+
+        <form action="/veterinario/input_medicina" method="post">
+        <label>Descripcion:</label>
+        <input type="text" name="descripcion" required><br><br>
+        <label>Lugar recetado:</label>
+        <input type="text" name="lugar_recetado" ><br><br>
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <br>
+
+    <h1>Insertar Enfermedad</h1>
+
+        <form action="/veterinario/input_enfermedad" method="post">
+      <label>Nombre:</label>
+        <input type="text" name="nombre" required><br><br>
+        <label>Descripcion:</label>
+        <input type="text" name="descripcion" required><br><br>
+        <label>Lugar recetado:</label>
+        <input type="text" name="lugar_recetado" ><br><br>
+
+        <label>Id de medicina:</label>
+        <input type="number" name="medicina_id" step="1"><br><br>
+        <label>Id de vacuna:</label>
+        <input type="number" name="vacuna_id" step="1"><br><br>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <br>
+    </body>
+</html>

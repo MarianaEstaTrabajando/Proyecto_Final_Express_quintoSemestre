@@ -1,0 +1,49 @@
+ <head><link rel="stylesheet" href="/css/estilos.css"></head>
+<body>
+
+    <table border="1">
+        <tr>
+            <th>Enfermedad id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Lugar detectado/tratado</th> <th>Veterinario_id</th>
+            <th>Refugio id</th>
+            <th>Medicina id</th>
+            <th>Vacuna id</th>
+            <th>Guardar modificación</th>
+        </tr>
+
+        <% enfermedades.forEach(enfermedad => { %>
+    
+        <tr>
+            <form action="/veterinario/modificar_enfermedad/<%= enfermedad.id %>" method="post">
+
+                <td><%=enfermedad.id%></td>
+                
+                <td><input type="text" name="nombre" value="<%= enfermedad.nombre %>" required></td> 
+
+                <td><input type="text" name="descripcion" value="<%= enfermedad.descripcion %>" required></td> 
+                
+                <td><input type="text" name="lugar_recetado" value="<%= enfermedad.lugar_recetado %>"></td>
+
+                <input type="hidden" name="id_veterinario" value="<%=enfermedad.id_veterinario%>">
+
+                <input type="hidden" name="refugioId" value="<%=enfermedad.refugio_id%>">
+                
+                <td><%=enfermedad.id_veterinario%></td>
+
+                <td><%=enfermedad.refugio_id%></td>
+
+                 <td><input type="number" name="medicina_id" value="<%= enfermedad.medicina_id %>" ></td> 
+                
+                <td><input type="number" name="vacuna_id" value="<%= enfermedad.vacuna_id %>"></td>
+                
+                <td><button type="submit">Guardar cambios</button></td>
+            
+            </form>
+        </tr>
+
+        <% }) %>
+    </table>
+
+</body>

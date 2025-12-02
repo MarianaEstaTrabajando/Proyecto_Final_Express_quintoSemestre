@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <link rel="stylesheet" href="/css/estilos.css">
+    <meta charset="UTF-8">
+    <title>Inserta datos del Gato</title>
+</head>
+<body>
+    <h1>Datos:</h1>
+<form action="/voluntario/input_gato" method="post">
+    <label for ="nombre">Nombre</label>         
+    <input type="text" name="nombre" id="nombre" required><br>
+
+    <%if(user.refugio_id==0){ %>
+    <label for ="refugioId">Refugio id</label>
+    <input type="number" name="refugioId" id="refugioId" required><br>
+
+    <% }
+    else{ %>
+    <input type="hidden" name="refugioId" value="<%= user.refugio_id %>">
+<% } %>
+
+    <label for ="descripcion">Descripcion</label>
+    <input type="text" name="descripcion" id="descripcion" required><br>
+    <label for ="temperamento">Temperamento</label>
+    <input type="text" name="temperamento" id="temperamento" required><br>
+    <label for ="edad">Edad</label>
+    <input type="number" name="edad" id="edad" required><br>
+    <label for ="raza">Raza</label>
+    <input type="text" name="raza" id="raza" required><br>
+    
+    <button type="submit">Guardar Gato</button>
+    <!-- <a href="/hola"><button>Volver a inicio</button></a> -->
+</form>
+</body>
+</html>

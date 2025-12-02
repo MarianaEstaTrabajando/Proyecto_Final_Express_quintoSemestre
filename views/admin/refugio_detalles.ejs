@@ -1,0 +1,47 @@
+<head>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+
+<div style="margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+  
+  <h2>Nombre del Refugio: <%= refugio.nombre %></h2>
+  <p>Descripción: <%= refugio.descripcion %></p>
+  <p>Cantidad de gatos: <%= refugio.cantidad_gatos %></p>
+  <p>Tiempo de existencia: <%= refugio.tiempo_existencia %> años</p>
+  <p>Fondos actuales: $<%= refugio.fondos_actuales %></p>
+
+  <p>
+    <a href="/admin/modificar_refugio_form/<%= refugio.id %>">
+      <button type="button">Modificar</button>
+    </a>
+  </p>
+
+  <h3>Fotos:</h3>
+  <% if (refugio.fotos.length > 0) { %>
+    <div style="display:flex; gap:15px; flex-wrap:wrap;">
+      <% refugio.fotos.forEach(img => { %>
+        <img src="/<%= img.urlImagen %>"
+             style="width:400px; height:400px; object-fit:cover; border-radius:8px;">
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No hay fotos.</p>
+  <% } %>
+
+  <h3>Documentos:</h3>
+  <% if (refugio.documentos.length > 0) { %>
+    <ul>
+      <% refugio.documentos.forEach(doc => { %>
+        <li>
+          <p>Nombre: <%= doc.nombre_dueno %></p>
+          <p>Descripción: <%= doc.descripcion %></p>
+          <p>Fecha emisión: <%= doc.fecha_emision %></p>
+          <p>Fecha subida: <%= doc.fecha_subida %></p>
+          <a href="/<%= doc.url %>" target="_blank">Ver documento</a>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No hay documentos.</p>
+  <% } %>
+</div>

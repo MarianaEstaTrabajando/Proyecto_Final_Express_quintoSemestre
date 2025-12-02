@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <meta charset="UTF-8">
+    <title>Inserta datos del Refugio</title>
+</head>
+<body>
+    <h1>Datos del Refugio:</h1>
+    <form action="/admin/input_refugio" method="post">
+        
+        <label for="nombre">Nombre del Refugio</label>
+        <input type="text" name="nombre" id="nombre" required><br>
+
+        <label for="descripcion">Descripción</label>
+        <textarea name="descripcion" id="descripcion" rows="4" cols="50" required></textarea><br>
+
+        <label for="cantidad_gatos">Cantidad de Gatos</label>
+        <input type="number" name="cantidad_gatos" id="cantidad_gatos" required><br>
+
+        <label for="tiempo_existencia">Tiempo de Existencia (años)</label>
+        <input type="number" name="tiempo_existencia" id="tiempo_existencia" required><br>
+
+        <label for="fondos_actuales">Fondos Actuales</label>
+        <input type="number" step="0.01" name="fondos_actuales" id="fondos_actuales" required><br>
+
+        <button type="submit">Guardar Refugio</button>
+    </form>
+</body>
+</html>

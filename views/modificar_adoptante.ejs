@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cargar datos</title>
+     <link rel="stylesheet" href="/css/estilos.css">
+    
+</head>
+<body>
+    <h1>Si no carga los datos pedidos su proceso no se completará</h1>
+    
+<h2>Subir foto: </h2>
+    <form action="/subirFotoAdoptante" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <input type="file" name="foto">
+  <button type="submit">Subir</button>
+</form>
+
+
+<br>
+<h2>Subir Documento</h2>
+<form action="/subirDocumentoAdoptante" method="post" enctype="multipart/form-data">
+     
+      <label for="date">Fecha</label>
+      <input type="date" id="date" name="fecha_emision">
+
+      <label for="descripcion">Descripcion</label>
+      <input type ="text" id="descripcion" name="descripcion" value="Descripcion">
+    <input type="hidden" name="nombre_dueno" value="<%usuario.nombre%>">
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <input type="file" name="documento">
+  <button type="submit">Subir</button>
+</form>
+
+    <br>
+
+<h2>Subir Dirección</h2>
+    <form action="/subirDireccionAdoptante" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>Dirección:</label>
+        <input type="text" name="direccion" required>
+        <button type="submit">Subir Dirección</button>
+    </form>
+   
+    <br>
+
+<h2>Subir Teléfono</h2>
+    <form action="/subirTelefonoAdoptante" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>Número de Teléfono:</label>
+        <input type="text" name="numero" required>
+        <button type="submit">Subir Teléfono</button>
+    </form>
+    <br>
+</body>
+</html>

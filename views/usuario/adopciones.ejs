@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <link rel="stylesheet" href="/css/estilos.css"></head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+            <%adopciones.forEach(adopcion=>{%>
+            <div style="display: flex; flex-direction: column; width: 180px; border: 1px solid #ccc; border-radius: 8px; padding: 10px; box-sizing: border-box; background: #fafafa;">
+           <h3>Solicitud de Adopción:</h3>
+            <p><strong>ID de la adopción: </strong><%=adopcion.id_adopcion%></p>
+            <p><strong>ID del usuario: </strong><%=adopcion.usuario_id%></p>
+            <p><strong>ID del gato: </strong><%=adopcion.gato_id%></p>
+            <p><strong>ID del trabajador: </strong><%=adopcion.trabajador_id%></p>
+            <p><strong>Fecha adopción: </strong><%=adopcion.fecha_adopcion%></p>
+            <p><strong>Fecha solicitud: </strong><%=adopcion.fecha_solicitud%></p>
+            <p><strong>Estado: </strong><%=adopcion.estado%></p>
+            <p><strong>ID del refugio: </strong><%=adopcion.refugio_id%></p>
+    
+            <%})%>
+        </div>
+    </body>
+</html>

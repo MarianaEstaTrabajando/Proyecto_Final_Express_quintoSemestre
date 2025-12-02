@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modificar Refugio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+   
+    <form action="/admin/modificar_refugio/<%= refugio.id %>" method="post">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" value="<%= refugio.nombre %>" required><br><br>
+
+      <label>Descripción:</label>
+      <textarea name="descripcion" required><%= refugio.descripcion %></textarea><br><br>
+
+      <label>Cantidad de gatos:</label>
+      <input type="number" name="cantidad_gatos" value="<%= refugio.cantidad_gatos %>" required><br><br>
+
+      <label>Tiempo de existencia (años):</label>
+      <input type="number" name="tiempo_existencia" value="<%= refugio.tiempo_existencia %>" required><br><br>
+
+      <label>Fondos actuales:</label>
+      <input type="number" step="0.01" name="fondos_actuales" value="<%= refugio.fondos_actuales %>" required><br><br>
+
+      <button type="submit">Modificar Refugio</button>
+    </form>
+
+   
+    <h2>Subir foto:</h2>
+    <form action="/admin/subirFotoRefugio" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="dueno_id" value="<%= refugio.id %>">
+      <input type="file" name="foto">
+      <button type="submit">Subir</button>
+    </form>
+
+ 
+    <h2>Borrar foto:</h2>
+    <p>Seleccione la posición de la foto a borrar</p>
+    <form action="/admin/borrarFotoRefugio" method="post">
+      <input type="number" name="indice" min="1" step="1" placeholder="Índice de la foto a borrar">
+      <input type="hidden" name="dueno_id" value="<%= refugio.id %>">
+      <button type="submit">Borrar</button>
+    </form>
+
+    <h2>Subir Documento</h2>
+    <form action="/admin/subirDocumentoRefugio" method="post" enctype="multipart/form-data">
+      <label for="date">Fecha</label>
+      <input type="date" id="date" name="fecha_emision">
+
+      <label for="descripcion">Descripción</label>
+      <input type="text" id="descripcion" name="descripcion" value="Descripcion">
+
+      <input type="hidden" name="nombre_dueno" value="<%= refugio.nombre %>">
+      <input type="hidden" name="dueno_id" value="<%= refugio.id %>">
+      <input type="file" name="documento">
+      <button type="submit">Subir</button>
+    </form>
+
+
+    <h2>Borrar Documento:</h2>
+    <p>Seleccione la posición del documento a borrar</p>
+    <form action="/admin/borrarDocumentoRefugio" method="post">
+      <input type="number" name="indice" min="1" step="1" placeholder="Índice del documento a borrar">
+      <input type="hidden" name="dueno_id" value="<%= refugio.id %>">
+      <button type="submit">Borrar</button>
+    </form>
+
+    <br>
+    <a href="/admin/listar_refugios"><button>Volver al listado</button></a>
+  </body>
+</html>

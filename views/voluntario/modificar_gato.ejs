@@ -1,0 +1,82 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <link rel="stylesheet" href="/css/estilos.css">
+    <meta charset="UTF-8">
+    <title>Modificar Gato</title>
+</head>
+<body>
+    <h1>Modificar Gato</h1>
+<p>Cuando le de a Guardar cambios no irá a otra página</p>
+
+    <form action="/voluntario/modificar_gato/<%= gato.id %>" method="post">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="<%= gato.nombre %>" required><br><br>
+               <label>Descripcion:</label>
+        <input type="text" name="descripcion" value="<%= gato.descripcion %>" required><br><br>
+
+    <%if(user.refugio_id==0){ %>
+    <label for ="refugioId">Refugio id</label>
+    <input type="number" name="refugioId" id="refugioId" value="<%= gato.refugio_id %>" required><br>
+
+    <% }
+    else{ %>
+    <input type="hidden" name="refugioId" value="<%= user.refugio_id %>">
+<% } %>
+        <label>Temperamento:</label>
+        <input type="text" name="temperamento" value="<%= gato.temperamento %>" required><br><br>
+        <label>Edad:</label>
+        <input type="text" name="edad_gato" value="<%= gato.edad %>" required><br><br>
+            <label>Raza:</label>
+        <input type="text" name="raza" value="<%= gato.raza %>" required><br><br>
+
+      
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+<h2>Subir foto: </h2>
+    <form action="/voluntario/subirFoto" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="dueno_id" value="<%= gato.id %>" >
+  <input type="file" name="foto">
+  <button type="submit">Subir</button>
+</form>
+
+<h2>Borrar foto: </h2>
+<p>Seleccione la posición de la foto a borrar</p>
+    <form action="/voluntario/borrarFoto" method="post" >
+        <input type="number" name="indice" min="1" step="1" placeholder="Índice de la foto a borrar" >
+  <input type="hidden" name="dueno_id" value="<%= gato.id %>" >
+  <button type="submit">Borrar</button>
+</form>
+
+<br>
+<h2>Subir Documento</h2>
+<form action="/voluntario/subirDocumento" method="post" enctype="multipart/form-data">
+     
+      <label for="date">Fecha</label>
+      <input type="date" id="date" name="fecha_emision">
+
+      <label for="descripcion">Descripcion</label>
+      <input type ="text" id="descripcion" name="descripcion" value="Descripcion">
+    <input type="hidden" name="nombre_dueno" value="<%gato.nombre%>">
+  <input type="hidden" name="dueno_id" value="<%= gato.id %>" >
+  <input type="file" name="documento">
+  <button type="submit">Subir</button>
+</form>
+<br>
+<h2>Borrar Documento: </h2>
+
+<p>Seleccione la posición del documento a borrar</p>
+    <form action="/voluntario/borrarDocumento" method="post" >
+        <input type="number" name="indice" min="1" step="1" placeholder="Índice del documento a borrar" >
+  <input type="hidden" name="dueno_id" value="<%= gato.id %>" >
+  <button type="submit">Borrar</button>
+</form>
+
+    <br>
+    <a href="/voluntario/listar_gatos"><button>Volver al listado</button></a>
+</body>
+</html>

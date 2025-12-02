@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="stylesheet" href="/css/estilos.css"></head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Auditorías</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+</head>
+<body>
+    <h1>Auditorías</h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+  <% auditorias.forEach(auditoria => { %>
+    <div style="display: flex; flex-direction: column; width: 200px; border: 1px solid #ccc; border-radius: 8px; padding: 10px; box-sizing: border-box; background: #fafafa;">
+      
+
+        <p><strong>ID:</strong><%=auditoria.id%></p>
+        <p><strong>Tabla que se cambió:</strong> <%= auditoria.tabla %> </p>
+        <p><strong>Acción:</strong> <%= auditoria.accion %></p>
+        <p><strong>Usuario:</strong> <%= auditoria.usuario %></p>
+        <p><strong>Fecha:</strong> <%= auditoria.fecha %></p>
+        <p><strong>ID registro:</strong> <%= auditoria.id_registro %></p>
+        <div class="detalle-scroll">
+        <p><strong>Detalles:</strong> <%= auditoria.detalle %></p>
+       </div>
+    
+
+    
+    </div>
+  <% }) %>
+</div>
+    
+</body>
+</html>

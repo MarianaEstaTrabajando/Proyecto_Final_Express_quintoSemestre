@@ -1,0 +1,56 @@
+<head> <link rel="stylesheet" href="/css/estilos.css"></head>
+<body>
+  
+
+<% gatos.forEach(gato => { %>
+  <div style="margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+
+    <h2><%= gato.nombreGato %></h2>
+    <p>Descripcion: <%= gato.descripcion %></p>
+    <p>Temperamento: <%= gato.temperamento %></p>
+    <p>Edad: <%= gato.edad_gato %> años</p>
+    <p>Raza: <%= gato.raza %> </p>
+    <p>Estado: <%= gato.estado %> </p>
+    <p>Refugio: <%= gato.refugio %> </p>
+     <p>Enfermedades: <%= gato.enfermedades %> </p>
+    <p>Medicinas para la enfermedad: <%= gato.medicinas %> </p>
+    <p>Vacunas aplicadas: <%= gato.vacunas %> </p>
+    <p><a href="/voluntario/modificar_gato_form/<%= gato.id %>"><button type="button">Modificar</button></p>
+   
+
+  
+    <!--      FOTOS DEL GATO          -->
+  
+
+    <h3>Fotos:</h3>
+    <% if (gato.fotos.length > 0) { %>
+      <div style="display:flex; gap:15px; flex-wrap:wrap;">
+        <% gato.fotos.forEach(img => { %>
+          <img src="/<%= img.url %>"
+               style="width:400px; height:400px; object-fit:cover; border-radius:8px;">
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No hay fotos.</p>
+    <% } %>
+
+
+    <!--      DOCUMENTOS DEL GATO     -->
+   
+
+    <h3>Documentos:</h3>
+    <% if (gato.documentos.length > 0) { %>
+      <ul>
+        <% gato.documentos.forEach(doc => { %>
+          <li>
+            <a href="/<%= doc.url %>" target="_blank">Ver documento</a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No hay documentos.</p>
+    <% } %>
+
+  </div>
+<% }) %>
+</body>

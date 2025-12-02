@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/estilos.css"></head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+ 
+
+       
+
+        <form action="/admin_refugio/modificar_trabajador/<%= usuario.id %>" method="post">
+            <label>Nombre:</label>
+            <input type="text" name="nombre" value="<%= usuario.nombre %>" required><br><br>
+            <label>Apellido1:</label>
+            <input type="text" name="apellido1" value="<%= usuario.apellido1 %>" required><br><br>
+            <label>Apellido2:</label>
+            <input type="text" name="apellido2" value="<%= usuario.apellido2 %>" required><br><br>
+            <label>Edad:</label>
+            <input type="number" name="edad" value="<%= usuario.edad %>" required><br><br>
+            <label>Usuario:</label>
+            <input type="text" name="usuario" value="<%= usuario.usuario %>" required><br><br>
+            <label>Password:</label>
+            <input type="text" name="password" value="<%= usuario.contrasena %>" required><br><br>
+            <label>Salario:</label>
+            <input type="number" name="salario" value="<%= usuarioRol.salario %>" required><br><br>
+            <button type="submit">Modificar Trabajador</button>
+        </form>
+
+<h2>Subir foto: </h2>
+    <form action="/admin_refugio/subirFotoTrabajador" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <input type="file" name="foto">
+  <button type="submit">Subir</button>
+</form>
+
+<h2>Borrar foto: </h2>
+<p>Seleccione la posición de la foto a borrar</p>
+    <form action="/admin_refugio/borrarFotoTrabajador" method="post" >
+        <input type="number" name="indice" min="1" step="1" placeholder="Índice de la foto a borrar" >
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <button type="submit">Borrar</button>
+</form>
+
+<br>
+<h2>Subir Documento</h2>
+<form action="/admin_refugio/subirDocumento" method="post" enctype="multipart/form-data">
+     
+      <label for="date">Fecha</label>
+      <input type="date" id="date" name="fecha_emision">
+
+      <label for="descripcion">Descripcion</label>
+      <input type ="text" id="descripcion" name="descripcion" value="Descripcion">
+    <input type="hidden" name="nombre_dueno" value="<%usuario.nombre%>">
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <input type="file" name="documento">
+  <button type="submit">Subir</button>
+</form>
+<br>
+<h2>Borrar Documento: </h2>
+
+<p>Seleccione la posición del documento a borrar</p>
+    <form action="/admin_refugio/borrarDocumento" method="post" >
+        <input type="number" name="indice" min="1" step="1" placeholder="Índice del documento a borrar" >
+  <input type="hidden" name="dueno_id" value="<%= usuario.id %>" >
+  <button type="submit">Borrar</button>
+</form>
+
+    <br>
+
+<h2>Subir Dirección</h2>
+    <form action="/admin_refugio/subirDireccion" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>Dirección:</label>
+        <input type="text" name="direccion" required>
+        <button type="submit">Subir Dirección</button>
+    </form>
+    <br>
+<h2>Borrar Dirección</h2>
+    <form action="/admin_refugio/borrarDireccion" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>ID Dirección a borrar:</label>
+        <input type="number" name="indice" required>
+        <button type="submit">Borrar Dirección</button>
+    </form>
+    <br>
+
+<h2>Subir Teléfono</h2>
+    <form action="/admin_refugio/subirTelefono" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>Número de Teléfono:</label>
+        <input type="text" name="numero" required>
+        <button type="submit">Subir Teléfono</button>
+    </form>
+    <br>
+<h2>Borrar Teléfono</h2>
+    <form action="/admin_refugio/borrarTelefono" method="post">
+        <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <label>ID Teléfono a borrar:</label>
+        <input type="number" name="indice" required>
+        <button type="submit">Borrar Teléfono</button>
+    </form>
+    <br>
+
+<h2>Aprobar usuario</h2>
+ <form action="/admin_refugio/aprobar" method="post">
+    <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <button type="submit">Aprobar</button>
+    </form>
+<h2>Rechazar usuario</h2>
+ <form action="/admin_refugio/rechazar" method="post">
+    <input type="hidden" name="usuario_id" value="<%= usuario.id %>">
+        <button type="submit">Rechazar</button>
+    </form>
+    <br>
+
+    <a href="/admin_refugio/listar_trabajadores"><button>Volver al listado</button></a>
+
+    </body>
+</html>

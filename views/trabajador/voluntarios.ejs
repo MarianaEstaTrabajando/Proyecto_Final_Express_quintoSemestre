@@ -1,0 +1,80 @@
+   <head><link rel="stylesheet" href="/css/estilos.css"></head>
+  
+    <h1>Buscar voluntarios</h1>
+
+     <div class="buscar-contenedor">
+ <button class="btn" id="botonBusqueda">Filtros de búsqueda</button>
+
+ <div class="panel-oculto" id="busquedaPanel">
+
+    <form action="/trabajador/listar_voluntarios_nombre" method="get">
+        <input type="text" name="nombre" placeholder="Buscar por nombre" >
+        <button type="submit">Buscar</button>
+    </form>
+
+   
+    <form action="/trabajador/listar_voluntarios_edad" method="get">
+        <input type="number" name="edad" placeholder="Edad" step="1" >
+        <button type="submit">Buscar</button>
+    </form>
+
+        <form action="/trabajador/listar_voluntario_id" method="get">
+        <input type="number" name="id" placeholder="Buscar por ID" step="1" >
+        <button type="submit">Buscar</button> 
+    </form>
+
+  </div></div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+  <% usuarios.forEach(usuario => { %>
+    <div style="display: flex; flex-direction: column; width: 180px; border: 1px solid #ccc; border-radius: 8px; padding: 10px; box-sizing: border-box; background: #fafafa;">
+      
+   
+      <% if (usuario.fotos.length > 0) { %>
+        <img src="/<%= usuario.fotos[0].url %>" 
+             alt="Foto del usuario" 
+             style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;">
+      <% } else { %>
+        <div style="width: 100%; height: 150px; background:#eee; border-radius:4px; margin-bottom:10px;"></div>
+      <% } %>
+
+      <div>
+        <p><strong>ID:</strong><%=usuario.id%></p>
+        <p><strong>Nombre:</strong> <%= usuario.nombre %> <%=usuario.apellido1%> <%=usuario.apellido2%></p>
+        <p><strong>Usuario:</strong> <%= usuario.usuario %></p>
+       
+      </div>
+
+    
+      <form action="/trabajador/listar_voluntario_id" method="get" style="margin-top:10px;">
+        <input type="hidden" name="id" value="<%= usuario.id %>">
+        <button type="submit" style="width:100%;">Ver</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('botonBusqueda');
+        const panel = document.getElementById('busquedaPanel');
+
+        
+        if (!btn || !panel) {
+            console.error("Error: No se encontró el botón o el panel. Revisa los IDs.");
+            return;
+        }
+
+        btn.addEventListener('click', (e) => {
+           
+            e.preventDefault(); 
+          
+            panel.classList.toggle('mostrar');
+            
+           
+            console.log("Clase 'mostrar' alternada");
+        });
+    });
+</script>
+    

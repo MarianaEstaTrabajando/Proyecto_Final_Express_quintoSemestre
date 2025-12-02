@@ -1,0 +1,76 @@
+  <head><link rel="stylesheet" href="/css/estilos.css"></head>
+ <% gatos.forEach(gato => { %>
+  <div style="margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+
+    <h2><%= gato.nombreGato %></h2>
+    <p>Descripcion: <%= gato.descripcion %></p>
+    <p>Temperamento: <%= gato.temperamento %></p>
+    <p>Edad: <%= gato.edad_gato %> años</p>
+    <p>Raza: <%= gato.raza %> </p>
+    <p>Estado: <%= gato.estado %> </p>
+    <p>Refugio: <%= gato.refugio %> </p>
+     <p>Enfermedades: <%= gato.enfermedades %> </p>
+    <p>Medicinas para la enfermedad: <%= gato.medicinas %> </p>
+    <p>Vacunas aplicadas: <%= gato.vacunas %> </p>
+    
+
+    <h1>Registrar enfermedad</h1>
+    <form action="/veterinario/enfermedad_gato/<%= gato.id %>" method="post">
+        <label>ID enfermedad:</label>
+        <input type="number" name="enfermedad_id" required step="1"><br>
+ 
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+
+    <h1>Registrar vacuna</h1>
+    <form action="/veterinario/vacuna_gato/<%= gato.id %>" method="post">
+        <label>ID vacuna:</label>
+        <input type="number" name="vacuna_id" required step="1"><br>
+ 
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+        <h1>Registrar medicina</h1>
+    <form action="/veterinario/medicina_gato/<%= gato.id %>" method="post">
+        <label>ID medicina:</label>
+        <input type="number" name="medicina_id" required step="1"><br>
+ 
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+  
+    <!--  Fotos del gato -->
+  
+
+    <h3>Fotos:</h3>
+    <% if (gato.fotos.length > 0) { %>
+      <div style="display:flex; gap:15px; flex-wrap:wrap;">
+        <% gato.fotos.forEach(img => { %>
+          <img src="/<%= img.url %>"
+               style="width:400px; height:400px; object-fit:cover; border-radius:8px;">
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No hay fotos.</p>
+    <% } %>
+
+
+    <!--  Documentos del gato  -->
+   
+
+    <h3>Documentos:</h3>
+    <% if (gato.documentos.length > 0) { %>
+      <ul>
+        <% gato.documentos.forEach(doc => { %>
+          <li>
+            <a href="/<%= doc.url %>" target="_blank">Ver documento</a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No hay documentos.</p>
+    <% } %>
+
+  </div>
+<% }) %>

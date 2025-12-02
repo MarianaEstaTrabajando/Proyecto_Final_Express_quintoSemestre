@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="/css/estilos.css"></head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Trabajador</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h2>Bienvenid@ <%=user.nombre%> estas son operaciones de administrador del refugio :)</h2>
+        <a href="/admin_refugio/listar_trabajadores"><button>Ver trabajadores</button></a>
+        <a href="/admin_refugio/input_trabajador_formulario"><button>Insertar trabajador</button></a>
+        <br>
+        <a href="/admin_refugio/auditorias"><button>Mostrar auditorías del refugio</button></a>
+
+           <form action="/admin_refugio/eliminar_id" method="get">
+        <input type="number" name="id" placeholder="Eliminar usuario por ID" step="1" >
+        <button type="submit">Eliminar</button> 
+    </form>
+    
+    </body>
+</html>
